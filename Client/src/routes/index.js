@@ -18,11 +18,11 @@ export const routes = [
     component: Register,
   },
   {
-    path: "/products",
+    path: "/products/:category",
     component: ProductList,
   },
   {
-    path: "/products/:id",
+    path: "/product/:id",
     component: Product,
   },
   {
