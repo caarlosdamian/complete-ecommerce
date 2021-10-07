@@ -2,20 +2,15 @@ import Announcement from "./components/Announcement";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar";
 import Newsletter from "./components/Newsletter/Newsletter";
-import Cart from "./pages/Cart/Cart";
-import Home from "./pages/Home";
-import Login from "./pages/Login/Login";
-import Product from "./pages/Product/Product";
-import ProductList from "./pages/ProductList/ProductList";
-import Register from "./pages/Register/Register";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
 import { Fragment } from "react";
+import { routes } from "./routes";
 function App() {
+  const routeComponents = routes.map(({ path, component }, key) => (
+    <Route exact path={path} component={component} key={key} />
+  ));
+
   return (
     <Router>
       <Announcement />
@@ -23,24 +18,7 @@ function App() {
       <Switch>
         <Fragment>
           <ScrollToTop />
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
-          <Route path="/register" exact>
-            <Register />
-          </Route>
-          <Route path="/products" exact>
-            <ProductList />
-          </Route>
-          <Route path="/products/1" exact>
-            <Product />
-          </Route>
-          <Route path="/checkout" exact>
-            <Cart />
-          </Route>
+          {routeComponents}
         </Fragment>
       </Switch>
       <Newsletter />
