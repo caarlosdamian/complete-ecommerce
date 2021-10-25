@@ -1,9 +1,11 @@
 import { Add, Remove } from "@material-ui/icons";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import { publicRequest } from "../../api/requestMethods";
+import { addProduct } from "../../redux/cartRedux";
 import { mobile } from "../../responsive";
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -97,6 +99,7 @@ const Button = styled.button`
   }
 `;
 const Product = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
@@ -112,7 +115,9 @@ const Product = () => {
       setQuantity(quantity + 1);
     }
   };
-  const handleClick = () => {};
+  const handleClick = () => {
+    dispatch(addProduct({ product, quantity }));
+  };
 
   useEffect(() => {
     const getProduct = async () => {

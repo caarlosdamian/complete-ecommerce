@@ -15,8 +15,11 @@ import {
   Center,
 } from "./navbar.css";
 import Imag from "../../utils/TOT.png";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+  console.log(quantity);
   const history = useHistory();
   const path = history.location.pathname;
 
@@ -60,7 +63,7 @@ const Navbar = () => {
             <MenuItem>
               {" "}
               <Link to="/checkout">
-                <Badge badgeContent={4} color="primary">
+                <Badge badgeContent={quantity} color="primary">
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>
