@@ -4,6 +4,7 @@ import Login from "../pages/Login/Login";
 import Product from "../pages/Product/Product";
 import ProductList from "../pages/ProductList/ProductList";
 import Register from "../pages/Register/Register";
+import Success from "../pages/Success/Success";
 export const routes = [
   {
     path: "/",
@@ -28,5 +29,9 @@ export const routes = [
   {
     path: "/checkout",
     component: Cart,
+  },
+  {
+    path: "/success",
+    component: Success,
   },
 ];

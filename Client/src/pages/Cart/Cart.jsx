@@ -2,6 +2,11 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import StripeCheckout from "react-stripe-checkout";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../api/requestMethods";
+import { useHistory } from "react-router-dom";
+
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
@@ -128,7 +133,30 @@ const Button = styled.button`
   cursor: pointer;
 `;
 const Cart = () => {
+  const KEY = process.env.REACT_APP_PUBLIC_STRIPE_KEY;
+  console.log(KEY);
   const cart = useSelector((state) => state.cart);
+  const history = useHistory();
+  const [stripeToken, setStripeToken] = useState(null);
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total,
+        });
+        history.push("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, history]);
   return (
     <Container>
       <Wrapper>
@@ -192,7 +220,17 @@ const Cart = () => {
               <SummaryItemText type="total">Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECK OUT NOW</Button>
+            <StripeCheckout
+              name="TOT Shop"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <Button>CHECK OUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
