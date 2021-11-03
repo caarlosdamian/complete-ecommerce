@@ -70,7 +70,6 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
-  console.log(isFetching);
   return (
     <Container>
       <Wrapper>
