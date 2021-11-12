@@ -1,2 +1,2 @@
 # Ecomerce-Fullstack
-Working on read me 
+Pending deploy
