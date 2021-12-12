@@ -1,2 +1,2 @@
 # Ecomerce-Fullstack
-Pending deploy
+completed
