@@ -28,14 +28,13 @@ function App() {
         <Fragment>
           <ScrollToTop />
           {routeComponents}
-
           <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
           <Route path="/register">
             {user ? <Redirect to="/" /> : <Register />}
           </Route>
         </Fragment>
       </Switch>
-      <Newsletter />
+      {/* <Newsletter /s> */}
       <Footer />
     </Router>
   );

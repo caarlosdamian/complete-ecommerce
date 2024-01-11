@@ -44,7 +44,7 @@ const ProductList = () => {
     <Container>
       <Title>{cat}</Title>
       <FilterContainer>
-        <Filter>
+        {/* <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select name="color" onChange={handleFilters}>
             <Option>Color</Option>
@@ -61,7 +61,7 @@ const ProductList = () => {
             <Option>M</Option>
             <Option>L</Option>
           </Select>
-        </Filter>
+        </Filter> */}
         <Filter>
           <FilterText>Sort Products:</FilterText>
           <Select onChange={(e) => setSort(e.target.value)}>

@@ -11,7 +11,7 @@ const Container = styled.div`
   font-size: 14px;
 `;
 const Announcement = () => {
-  return <Container>Super Deal! Free Shipping on Orders Over $50</Container>;
+  return <Container>Super Deal! Entregas todos los miércoles</Container>;
 };
 
 export default Announcement;

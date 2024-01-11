@@ -46,7 +46,7 @@ const CategoyItem = ({ item }) => {
         <Info>
           <Title>{item.title}</Title>
 
-          <Button>SHOP NOW</Button>
+          <Button>COMPRAR AHORA</Button>
         </Info>
       </Link>
     </Container>

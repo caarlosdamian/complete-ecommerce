@@ -14,12 +14,11 @@ import {
   Wrapper,
   Center,
 } from "./navbar.css";
-import Imag from "../../utils/TOT.png";
+import Imag from "../../utils/tropical.png";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-  console.log(quantity);
   const history = useHistory();
   const path = history.location.pathname;
 
@@ -42,7 +41,8 @@ const Navbar = () => {
           </Left>
           <Center>
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <Logo src={Imag} alt="" />
+              {/* <Logo src={Imag} alt="" /> */}
+              <span style={{fontSize:'28px'}}>Vikinga Tropical</span>
             </Link>
           </Center>
           <Right>
@@ -50,14 +50,14 @@ const Navbar = () => {
               to="/register"
               style={{ textDecoration: "none", color: "black" }}
             >
-              <MenuItem>REGISTER</MenuItem>
+              <MenuItem>REGISTRATE</MenuItem>
             </Link>
             <Link
               to="login"
               onClick={onclick}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <MenuItem>SIGN IN</MenuItem>
+              <MenuItem>INICIAR SESION</MenuItem>
             </Link>
 
             <MenuItem>

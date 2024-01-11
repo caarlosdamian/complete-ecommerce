@@ -13,6 +13,10 @@ export const routes = [
     component: ProductList,
   },
   {
+    path: "/products/",
+    component: ProductList,
+  },
+  {
     path: "/product/:id",
     component: Product,
   },

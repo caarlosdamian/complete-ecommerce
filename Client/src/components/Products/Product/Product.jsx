@@ -68,7 +68,7 @@ const Product = ({ item }) => {
       <Image src={item.img} />
 
       <Info>
-        <Link to="/products/1">
+        <Link to={`/product/${item._id}`}>
           <Icon>
             <ShoppingCartOutlinedIcon />
           </Icon>

@@ -11,6 +11,7 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  gap: 24px;
   ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const ImgContainer = styled.div`
@@ -20,7 +21,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 90vh;
-  object-fit: cover;
+  object-fit: contain;
   ${mobile({ height: "40vh" })}
 `;
 const InfoContainer = styled.div`
@@ -141,7 +142,7 @@ const Product = () => {
           <Desc>{product.desc}</Desc>
           <Price>$ {product.price}</Price>
           <FilterContainer>
-            <Filter>
+            {/* <Filter>
               <FilterTitle>Color</FilterTitle>
               {product?.color?.map((val) => (
                 <FilterColor
@@ -150,9 +151,9 @@ const Product = () => {
                   onClick={() => setcolor(val)}
                 />
               ))}
-            </Filter>
+            </Filter> */}
             <Filter>
-              <FilterTitle>Size</FilterTitle>
+              <FilterTitle>Tamaño</FilterTitle>
               <FilterSize onChange={(e) => setsize(e.target.value)}>
                 <FilterSizeOption>Select</FilterSizeOption>
                 {product?.size?.map((val) => (
